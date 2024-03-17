@@ -65,6 +65,18 @@
   border-bottom: 1px solid var(--color--gray-90);
 }
 
+.event-dates {
+  display: grid;
+  margin: 0em 1em 0em 1em;
+  justify-content: space-between;
+  grid-template-columns: auto auto;
+  border-bottom: 1px solid var(--color--gray-90);
+}
+
+.event-dates {
+  display: grid;
+}
+
 .event-tags {
   display: grid;
   margin: 0.5em 1em 0em 1em;

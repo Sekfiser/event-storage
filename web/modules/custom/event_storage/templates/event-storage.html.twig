@@ -6,34 +6,43 @@
   <div class="creation-panel">
     <a class="button--primary button" href="/event-storage/event">Создать событие</a>
   </div>
-    {% for item in events %}
-      <div class="event-container text-content">
-        <div class="event-header">
-          <div class="event-type">
-            <span>{{ item.event_type_translation }}</span>
-            <a href="{{ path( 'event_storage.event_delete', currentFilters|merge({'eventId': item.event_id, page: currentPage})) }}">Удалить</a>
-          </div>
-          <div class="event-title">
-            <span>{{ item.event_title }}</span>
-          </div>
+  {% for item in events %}
+    <div class="event-container text-content">
+      <div class="event-header">
+        <div class="event-type">
+          <span>{{ item.event_type_translation }}</span>
+          <a
+            href="{{ path( 'event_storage.event_delete', currentFilters|merge({'eventId': item.event_id, page: currentPage})) }}">Удалить</a>
         </div>
-        <div class="event-description">
-            {{ item.event_description|raw }}
+        <div class="event-title">
+          <span>{{ item.event_title }}</span>
         </div>
-        {% if item.tags %}
+      </div>
+      <div class="event-description">
+        {{ item.event_description }}
+      </div>
+      {% if item.event_start_at or item.event_end_at %}
+        <div class="event-dates">
+          <span>Начало события: {{ item.event_start_at|date("H:i d.m.Y") }}</span>
+          {% if item.event_end_at %}
+            <span>Конец события: {{ item.event_end_at|date("H:i d.m.Y") }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if item.tags %}
         <div class="event-tags">
           <div>Тэги:</div>
           {% for tag in item.tags %}
             <div class="event-tag">{{ tag.tag_name }}</div>
           {% endfor %}
         </div>
-        {% endif %}
-        <div class="event-footer">
-          <span>Дата и время создания: {{item.event_created_at|date("H:i d.m.Y")}}</span>
-          <a href="{{ path( 'event_storage.event_edit', {'eventId': item.event_id}) }}">Редактировать</a>
-        </div>
+      {% endif %}
+      <div class="event-footer">
+        <span>Дата и время создания: {{ item.event_created_at|date("H:i d.m.Y") }}</span>
+        <a href="{{ path( 'event_storage.event_edit', {'eventId': item.event_id}) }}">Редактировать</a>
       </div>
-    {% endfor %}
+    </div>
+  {% endfor %}
   {% apply spaceless %}
     {% if lastPage > 1 %}
 
