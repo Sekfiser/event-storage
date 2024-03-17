@@ -12,7 +12,7 @@ event_storage.event_delete:
     _controller: '\Drupal\event_storage\Controller\EventStorageController::deleteEvent'
     _title: 'Хранилище событий'
   requirements:
-    _permission: 'access content'
+    _permission: 'access administration pages'
 
 event_storage.event:
   path: '/event-storage/event'
@@ -20,7 +20,7 @@ event_storage.event:
     _title: 'Создание нового события'
     _form: 'Drupal\event_storage\Form\EventForm'
   requirements:
-    _permission: 'access content'
+    _permission: 'access administration pages'
 
 event_storage.event_edit:
   path: '/event-storage/event/{eventId}/edit'
@@ -28,7 +28,7 @@ event_storage.event_edit:
     _title: 'Редактирование события'
     _form: 'Drupal\event_storage\Form\EventEditForm'
   requirements:
-    _permission: 'access content'
+    _permission: 'access administration pages'
 
 event_storage.event_search:
   path: '/event-storage/event-search'

@@ -3,16 +3,20 @@
   <div class="filter-wrapper">
     {{ searchForm }}
   </div>
+  {% if 'administrator' in user.getroles() %}
   <div class="creation-panel">
     <a class="button--primary button" href="/event-storage/event">Создать событие</a>
   </div>
+  {% endif %}
   {% for item in events %}
     <div class="event-container text-content">
       <div class="event-header">
         <div class="event-type">
           <span>{{ item.event_type_translation }}</span>
+          {% if 'administrator' in user.getroles() %}
           <a
             href="{{ path( 'event_storage.event_delete', currentFilters|merge({'eventId': item.event_id, page: currentPage})) }}">Удалить</a>
+          {% endif %}
         </div>
         <div class="event-title">
           <span>{{ item.event_title }}</span>
@@ -39,7 +43,9 @@
       {% endif %}
       <div class="event-footer">
         <span>Дата и время создания: {{ item.event_created_at|date("H:i d.m.Y") }}</span>
+        {% if 'administrator' in user.getroles() %}
         <a href="{{ path( 'event_storage.event_edit', {'eventId': item.event_id}) }}">Редактировать</a>
+        {% endif %}
       </div>
     </div>
   {% endfor %}
