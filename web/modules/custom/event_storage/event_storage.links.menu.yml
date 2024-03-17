@@ -1,0 +1,6 @@
+event_storage.main_page:
+  title: 'Хранилище событий'
+  description: 'Хранилище событий'
+  route_name: event_storage.main_page
+  weight: 100
+  menu_name: main

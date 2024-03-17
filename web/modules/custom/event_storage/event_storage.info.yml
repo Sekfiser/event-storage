@@ -1,0 +1,9 @@
+name: Event Storage Module
+description: Creates a CRUD event storage page.
+package: Custom
+
+type: module
+core_version_requirement: ^9.4 || ^10
+
+dependencies:
+  - drupal:select2

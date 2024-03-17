@@ -1,0 +1,127 @@
+<?php
+
+use Drupal\Core\Database\Database;
+
+function event_storage_schema()
+{
+  $schema['event_storage'] = [
+    'description' => 'The table for storing event information',
+    'fields' => [
+      'event_id' => [
+        'description' => 'Primary identifier for event',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,]
+      ,
+      'event_title' => [
+        'description' => 'Title of the event',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,]
+      ,
+      'event_description' => [
+        'description' => 'Description of event',
+        'type' => 'text',
+        'length' => 100,
+        'not null' => TRUE,]
+      ,
+      'event_type' => [
+        'description' => 'Type of the event',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,]
+      ,
+      'event_start_at' => [
+        'description' => 'Date of event start',
+        'pgsql_type' => 'timestamp',
+        'not null' => FALSE,
+      ]
+      ,
+      'event_end_at' => [
+        'description' => 'Date of event end',
+        'pgsql_type' => 'timestamp',
+        'not null' => FALSE,
+      ]
+      ,
+      'event_created_at' => [
+        'description' => 'Date of event creation',
+        'pgsql_type' => 'timestamp',
+        'not null' => TRUE,
+        'default' => 'now()']
+      ,
+      'event_updated_at' => [
+        'description' => 'Date of event update',
+        'pgsql_type' => 'timestamp',
+        'not null' => FALSE
+      ]
+      ,
+      'created_by' => [
+        'description' => 'Identifier for user that created event',
+        'pgsql_type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,]
+      ,
+      'updated_by' => [
+        'description' => 'Identifier for user that updated event',
+        'pgsql_type' => 'int']
+      ,
+    ],
+    'primary key' => ['event_id'],
+  ];
+
+  $schema['events_tags'] = [
+    'description' => 'Tag for event',
+    'fields' => [
+      'event_id' => [
+        'description' => 'Identifier for event',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'tag_name' => [
+        'description' => 'Name of the tag',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,]
+      ,
+    ],
+  ];
+
+  $schema['event_types'] = [
+    'description' => 'Tag for event',
+    'fields' => [
+      'event_type' => [
+        'description' => 'Type of the event',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,]
+      ,
+      'event_type_translation' => [
+        'description' => 'Type translation of the event',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,]
+      ,
+    ],
+    'primary key' => ['event_type'],
+  ];
+
+  return $schema;
+}
+
+function event_storage_install()
+{
+  try {
+    $query = \Drupal::database()->insert('event_types')->fields(['event_type', 'event_type_translation']);
+    $query->values(['news', 'Новости']);
+    $query->values(['incident', 'Происшествия']);
+    $query->values(['cataclysm', 'Катаклизмы']);
+
+    $query->execute();
+
+
+
+
+  } catch (Exception $e) {
+  }
+}

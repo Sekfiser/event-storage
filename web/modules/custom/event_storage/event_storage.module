@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ *
+ * Register a module or theme's theme implementations.
+ * The implementations declared by this hook specify how a
+ * particular render array is to be rendered as HTML.
+ *
+ * See: https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21theme.api.php/function/hook_theme
+ *
+ * If you change this method, clear theme registry and routing
+ * table 'drush cc theme-registry' and 'drush cc router'.
+ */
+function event_storage_theme($existing, $type, $theme, $path) {
+
+  return [
+    'event_storage' => [
+      'render element' => 'children',
+      'template' => 'event-storage',
+      'path' => $path . '/templates',
+      'variables' => [
+        'events' => [],
+        'lastPage' => 0,
+        'currentPage' => 0,
+        'currentFilters' => [],
+        'paginationPath' => '',
+        'searchForm' => [],
+        'showAlwaysFirstAndLast' => false,
+      ],
+    ],
+  ];
+
+}

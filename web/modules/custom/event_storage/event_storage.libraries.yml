@@ -1,0 +1,11 @@
+main-content:
+  version: 1.x
+  css:
+    theme:
+      css/event-storage-theme.css : {}
+  js:
+    js/event-storage.js : {}
+event-form:
+  version: 1.x
+  js:
+    js/event-form.js : {}

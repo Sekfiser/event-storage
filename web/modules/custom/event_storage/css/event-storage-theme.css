@@ -1,0 +1,138 @@
+.pagination-wrapper {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+}
+
+.pagination {
+  display: grid;
+  place-items: center;
+  margin: 1.5em 0em 0em 0em;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(35px, 2.2em));
+  gap: 5px;
+}
+
+.page-item {
+  display: grid;
+  background-color: var(--color--primary-60);
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.page-item > a {
+  color: white;
+  text-decoration: none;
+  min-width: 35px;
+  text-align: center;
+  padding: 0px 7px 0px 7px;
+}
+
+.page-item > a:hover {
+  color: white;
+}
+
+.page-dots {
+  display: grid;
+  cursor: default;
+}
+
+.page-item:hover {
+  background-color: var(--color--primary-30);
+}
+
+.page-item.active {
+  background-color: var(--color--primary-40);
+}
+
+.event-container {
+  border: 2px solid var(--color--gray-90);
+  border-radius: 5px;
+  margin-top: 0.5em;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.event-header {
+  padding: 0.5em 0em 0.5em 0em;
+}
+
+.event-description {
+  display: grid;
+  place-items: center;
+  margin: 0em 1em 0em 1em;
+  border-bottom: 1px solid var(--color--gray-90);
+}
+
+.event-tags {
+  display: grid;
+  margin: 0.5em 1em 0em 1em;
+  border-bottom: 1px solid var(--color--gray-90);
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  justify-content: start;
+  gap: 5px;
+  align-items: center;
+  justify-items : center;
+}
+
+.event-tag {
+  padding: 0em 0.4em 0em 0.4em;
+  display: grid;
+  background-color: var(--color--primary-60);
+  color: white;
+  border-radius: 10px;
+  align-content: center;
+  text-align: center;
+  font-size: 0.8em;
+  height: 75%;
+}
+
+.event-description p{
+  text-align: justify;
+  margin: 0em 0em 0.5em 0em;
+}
+
+.event-type {
+  margin-left: 1em;
+  margin-right: 1em;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: auto auto;
+}
+
+.event-type > * {
+  display: grid;
+}
+
+.event-type span{
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 7px solid var(--color--primary-50);
+}
+
+.event-title {
+  border-bottom: 1px solid var(--color--gray-90);
+  margin: 0.3em 1em 0.3em 1em;
+}
+
+.event-title span{
+  font-weight: bold;
+  text-align: justify;
+}
+
+.event-footer{
+  margin: 0.2em 1em 0.2em 1em;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: auto auto;
+}
+
+.event-footer > *{
+  display: grid;
+}
+
+.event-delete {
+  align-content: center;
+}
