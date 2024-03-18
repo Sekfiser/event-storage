@@ -1,4 +1,5 @@
-Выполнить composer install
+Выполнить composer install<br>
+Поменять подключение к базе в файле конфигурации<br>
 <br><br><br>
 Путь к модулю /web/modules/custom/event_storage
 <br><br>
