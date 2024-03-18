@@ -119,9 +119,54 @@ function event_storage_install()
 
     $query->execute();
 
+    $even_storage_file = 'modules/custom/event_storage/db_dumps/event_storage.json';
+    if(file_exists($even_storage_file))
+    {
+      $events = json_decode(file_get_contents($even_storage_file), true);
+//      \Drupal::logger('event_storage')->notice(print_r($events, true));
+      foreach ($events['event_storage'] as $event){
+        $insertFields = [
+          'event_title' => $event['event_title'],
+          'event_description' => $event['event_description'],
+          'event_type' => $event['event_type'],
+          'created_by' => $event['created_by'],
+          'updated_by' => $event['updated_by'],
+          'event_start_at' => $event['event_start_at'],
+          'event_end_at' => $event['event_end_at'],
+        ];
 
+        try {
+          \Drupal::database()->insert('event_storage')->fields(
+            $insertFields
+          )->execute();
 
+        } catch (\Exception $e) {
 
+        }
+      }
+    }
+
+    $events_tags_file = 'modules/custom/event_storage/db_dumps/events_tags.json';
+    if(file_exists($events_tags_file))
+    {
+      $tags = json_decode(file_get_contents($events_tags_file), true);
+//      \Drupal::logger('event_storage')->notice(print_r($events, true));
+      foreach ($tags['events_tags'] as $tag){
+        $insertFields = [
+          'event_id' => $tag['event_id'],
+          'tag_name' => $tag['tag_name'],
+        ];
+
+        try {
+          \Drupal::database()->insert('events_tags')->fields(
+            $insertFields
+          )->execute();
+
+        } catch (\Exception $e) {
+
+        }
+      }
+    }
   } catch (Exception $e) {
   }
 }
