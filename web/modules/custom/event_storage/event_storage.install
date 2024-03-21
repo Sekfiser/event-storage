@@ -54,7 +54,7 @@ function event_storage_schema()
         'pgsql_type' => 'timestamp',
         'mysql_type' => 'DATETIME',
         'not null' => TRUE,
-        'default' => 'now()',
+        'default' => 'CURRENT_TIMESTAMP',
       ]
       ,
       'event_updated_at' => [
