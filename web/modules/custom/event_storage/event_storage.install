@@ -11,59 +11,72 @@ function event_storage_schema()
         'description' => 'Primary identifier for event',
         'type' => 'serial',
         'not null' => TRUE,
-        'unsigned' => TRUE,]
+        'unsigned' => TRUE,
+      ]
       ,
       'event_title' => [
         'description' => 'Title of the event',
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,]
+        'not null' => TRUE,
+      ]
       ,
       'event_description' => [
         'description' => 'Description of event',
         'type' => 'text',
         'length' => 100,
-        'not null' => TRUE,]
+        'not null' => TRUE,
+      ]
       ,
       'event_type' => [
         'description' => 'Type of the event',
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,]
+        'not null' => TRUE,
+      ]
       ,
       'event_start_at' => [
         'description' => 'Date of event start',
-        'type' => 'timestamp',
+        'pgsql_type' => 'timestamp',
+        'mysql_type' => 'datetime',
         'not null' => FALSE,
       ]
       ,
       'event_end_at' => [
         'description' => 'Date of event end',
-        'type' => 'timestamp',
+        'pgsql_type' => 'timestamp',
+        'mysql_type' => 'datetime',
         'not null' => FALSE,
       ]
       ,
       'event_created_at' => [
         'description' => 'Date of event creation',
-        'type' => 'timestamp',
+        'pgsql_type' => 'timestamp',
+        'mysql_type' => 'datetime',
         'not null' => TRUE,
-        'default' => 'now()']
+        'default' => 'now()',
+      ]
       ,
       'event_updated_at' => [
         'description' => 'Date of event update',
-        'type' => 'timestamp',
-        'not null' => FALSE
+        'pgsql_type' => 'timestamp',
+        'mysql_type' => 'datetime',
+        'not null' => FALSE,
       ]
       ,
       'created_by' => [
         'description' => 'Identifier for user that created event',
         'pgsql_type' => 'serial',
+        'mysql_type' => 'int',
         'not null' => TRUE,
         'unsigned' => TRUE,]
       ,
       'updated_by' => [
         'description' => 'Identifier for user that updated event',
-        'type' => 'int']
+        'pgsql_type' => 'int',
+        'mysql_type' => 'int',
+        'unsigned' => TRUE,
+      ]
       ,
     ],
     'primary key' => ['event_id'],
@@ -120,11 +133,10 @@ function event_storage_install()
     $query->execute();
 
     $even_storage_file = 'modules/custom/event_storage/db_dumps/event_storage.json';
-    if(file_exists($even_storage_file))
-    {
+    if (file_exists($even_storage_file)) {
       $events = json_decode(file_get_contents($even_storage_file), true);
 //      \Drupal::logger('event_storage')->notice(print_r($events, true));
-      foreach ($events['event_storage'] as $event){
+      foreach ($events['event_storage'] as $event) {
         $insertFields = [
           'event_title' => $event['event_title'],
           'event_description' => $event['event_description'],
@@ -147,11 +159,10 @@ function event_storage_install()
     }
 
     $events_tags_file = 'modules/custom/event_storage/db_dumps/events_tags.json';
-    if(file_exists($events_tags_file))
-    {
+    if (file_exists($events_tags_file)) {
       $tags = json_decode(file_get_contents($events_tags_file), true);
 //      \Drupal::logger('event_storage')->notice(print_r($events, true));
-      foreach ($tags['events_tags'] as $tag){
+      foreach ($tags['events_tags'] as $tag) {
         $insertFields = [
           'event_id' => $tag['event_id'],
           'tag_name' => $tag['tag_name'],
