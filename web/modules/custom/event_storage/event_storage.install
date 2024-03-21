@@ -155,6 +155,8 @@ function event_storage_install()
 
         }
       }
+    }else{
+      \Drupal::logger('event_storage')->notice("No event_storage dumps");
     }
 
     $events_tags_file = 'modules/custom/event_storage/db_dumps/events_tags.json';
@@ -176,6 +178,8 @@ function event_storage_install()
 
         }
       }
+    }else{
+      \Drupal::logger('event_storage')->notice("No events_tags dumps");
     }
   } catch (Exception $e) {
   }
