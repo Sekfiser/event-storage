@@ -178,7 +178,7 @@ final class EventEditForm extends FormBase
       }
 
       if ($rowCount == 1) {
-        $this->messenger()->addStatus($this->t('Событие успешно изменено.').print_r($formFields['event_start'], true));
+        $this->messenger()->addStatus($this->t('Событие успешно изменено.').print_r($insertForm, true));
       } else {
         $this->messenger()->addWarning($this->t('Произошла ошибка при обновлении.'));
       }
