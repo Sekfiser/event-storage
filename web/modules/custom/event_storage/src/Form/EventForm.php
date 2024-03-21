@@ -155,7 +155,7 @@ final class EventForm extends FormBase
     }
 
     if ($eventId > 0) {
-      $this->messenger()->addStatus($this->t('Событие успешно создано.'));
+      $this->messenger()->addStatus($this->t('Событие успешно создано.').print_r($formFields['event_start'], true));
     }
 
     $form_state->setRedirect('event_storage.main_page');
