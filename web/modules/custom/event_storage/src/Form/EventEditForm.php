@@ -174,13 +174,13 @@ final class EventEditForm extends FormBase
         }
 
       } catch (\Exception $e) {
-        $this->messenger()->addError($this->t('Произошла ошибка при редактировании.'));
+        $this->messenger()->addError($this->t('Произошла ошибка при редактировании.').print_r($insertForm, true));
       }
 
       if ($rowCount == 1) {
         $this->messenger()->addStatus($this->t('Событие успешно изменено.').print_r($insertForm, true));
       } else {
-        $this->messenger()->addWarning($this->t('Произошла ошибка при обновлении.'));
+        $this->messenger()->addWarning($this->t('Произошла ошибка при обновлении.').print_r($insertForm, true));
       }
 
       $form_state->setRedirect('event_storage.main_page');
