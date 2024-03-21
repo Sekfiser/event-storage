@@ -152,7 +152,7 @@ function event_storage_install()
           )->execute();
 
         } catch (\Exception $e) {
-
+          \Drupal::logger('event_storage')->notice($e->getMessage());
         }
       }
     }else{
