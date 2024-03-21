@@ -103,7 +103,6 @@ final class EventEditForm extends FormBase
     $form['event_end'] = [
       '#type' => 'datetime',
       '#title' => $this->t('Дата конца события'),
-      '#required' => TRUE,
       '#default_value' => $event->event_end_at ? new DrupalDateTime($event->event_end_at) : null,
     ];
 
