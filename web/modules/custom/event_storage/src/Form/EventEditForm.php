@@ -156,8 +156,8 @@ final class EventEditForm extends FormBase
         'event_title' => $formFields['event_title'],
         'event_description' => $formFields['event_description'],
         'event_type' => $formFields['event_type'],
-        'event_start_at' => $formFields['event_start']->date,
-        'event_end_at' => $formFields['event_end']->date,
+        'event_start_at' => $formFields['event_start'],
+        'event_end_at' => $formFields['event_end'],
       ];
 
       try {
@@ -178,7 +178,7 @@ final class EventEditForm extends FormBase
       }
 
       if ($rowCount == 1) {
-        $this->messenger()->addStatus($this->t('Событие успешно изменено.'));
+        $this->messenger()->addStatus($this->t('Событие успешно изменено.').print_r($formFields['event_start'], true));
       } else {
         $this->messenger()->addWarning($this->t('Произошла ошибка при обновлении.'));
       }
