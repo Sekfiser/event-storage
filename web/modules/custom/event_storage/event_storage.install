@@ -124,6 +124,10 @@ function event_storage_schema()
 function event_storage_install()
 {
   try {
+    \Drupal::database()
+      ->query('ALTER TABLE event_storage
+                     MODIFY event_created_at TIMESTAMP NOT NULL
+                     DEFAULT CURRENT_TIMESTAMP')->execute();
     $query = \Drupal::database()->insert('event_types')->fields(['event_type', 'event_type_translation']);
     $query->values(['news', 'Новости']);
     $query->values(['incident', 'Происшествия']);
