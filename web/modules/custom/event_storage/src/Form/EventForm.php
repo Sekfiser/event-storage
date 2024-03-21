@@ -151,8 +151,7 @@ final class EventForm extends FormBase
         )->execute();
       }
     } catch (\Exception $e) {
-      $this->messenger()->addError($this->t('Произошла ошибка при создании.').$e->getMessage());
-      \Drupal::logger('event_storage')->notice($e->getMessage());
+      $this->messenger()->addError($this->t('Произошла ошибка при создании.').print_r($formFields, true));
     }
 
     if ($eventId > 0) {
