@@ -156,8 +156,8 @@ final class EventEditForm extends FormBase
         'event_title' => $formFields['event_title'],
         'event_description' => $formFields['event_description'],
         'event_type' => $formFields['event_type'],
-        'event_start_at' => $formFields['event_start']->date,
-        'event_end_at' => $formFields['event_end']->date,
+        'event_start_at' => $formFields['event_start'],
+        'event_end_at' => $formFields['event_end'],
       ];
 
       try {
