@@ -151,7 +151,7 @@ final class EventForm extends FormBase
         )->execute();
       }
     } catch (\Exception $e) {
-      $this->messenger()->addError($this->t('Произошла ошибка при создании.').print_r($formFields['event_start']->date, true));
+      $this->messenger()->addError($this->t('Произошла ошибка при создании.'));
     }
 
     if ($eventId > 0) {
