@@ -86,7 +86,7 @@ function event_storage_schema()
     'fields' => [
       'event_id' => [
         'description' => 'Identifier for event',
-        'type' => 'serial',
+        'type' => 'int',
         'not null' => TRUE,
         'unsigned' => TRUE,
       ],
