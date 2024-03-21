@@ -136,8 +136,8 @@ final class EventForm extends FormBase
       'event_type' => $formFields['event_type'],
       'created_by' => $form_state->get('created_by'),
       'updated_by' => null,
-      'event_start_at' => $formFields['event_start']->date,
-      'event_end_at' => $formFields['event_end']->date,
+      'event_start_at' => $formFields['event_start'],
+      'event_end_at' => $formFields['event_end'],
     ];
 
     try {
