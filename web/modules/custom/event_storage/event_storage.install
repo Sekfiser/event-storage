@@ -33,25 +33,25 @@ function event_storage_schema()
       ,
       'event_start_at' => [
         'description' => 'Date of event start',
-        'pgsql_type' => 'timestamp',
+        'type' => 'timestamp',
         'not null' => FALSE,
       ]
       ,
       'event_end_at' => [
         'description' => 'Date of event end',
-        'pgsql_type' => 'timestamp',
+        'type' => 'timestamp',
         'not null' => FALSE,
       ]
       ,
       'event_created_at' => [
         'description' => 'Date of event creation',
-        'pgsql_type' => 'timestamp',
+        'type' => 'timestamp',
         'not null' => TRUE,
         'default' => 'now()']
       ,
       'event_updated_at' => [
         'description' => 'Date of event update',
-        'pgsql_type' => 'timestamp',
+        'type' => 'timestamp',
         'not null' => FALSE
       ]
       ,
@@ -63,7 +63,7 @@ function event_storage_schema()
       ,
       'updated_by' => [
         'description' => 'Identifier for user that updated event',
-        'pgsql_type' => 'int']
+        'type' => 'int']
       ,
     ],
     'primary key' => ['event_id'],
